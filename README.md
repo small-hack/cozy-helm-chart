@@ -13,3 +13,7 @@ You need to have couchDB up and running right now, but I'll probably add a sub-c
 helm repo add cozy https://small-hack.github.io/cozy-helm-chart
 helm install cozy/cozy cozy
 ```
+
+## Status
+
+Under heavy development. Will probably be done in a week or two.
