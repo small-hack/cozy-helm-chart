@@ -68,7 +68,7 @@ Create the name of cozy secret to use
 {{- if .Values.cozy.existingSecret }}
 {{- .Values.cozy.existingSecret }}
 {{- else }}
-{{ "cozy-admin-secret" }}
+cozy-admin-secret
 {{- end }}
 {{- end }}
 
@@ -79,6 +79,6 @@ Create the name of couchdb secret to use
 {{- if .Values.couchdb.existingSecret }}
 {{- .Values.couchdb.existingSecret }}
 {{- else }}
-{{ "couchdb-secret" }}
+couchdb-secret
 {{- end }}
 {{- end }}
