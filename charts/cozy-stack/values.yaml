@@ -15,6 +15,29 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+cozy:
+  # -- cozy admin user's password. ignored if cozy.existingSecret is set
+  adminPassphrase: ""
+  # -- existing kubernetes secret containing a key called passphrase
+  existingSecret: ""
+  # -- fs url?
+  fs_url: ""
+
+couchdb:
+  # -- hostname of the couchdb server
+  host: ""
+  # -- port to connect to the database over
+  port: "5984"
+  # -- connect to couchdb with either http or https
+  protocol: "http"
+  # -- username to connect to couchdb with
+  user: ""
+  # -- password to connection to couchdb with
+  password: ""
+  # -- existing kubernetes secret with couchdb related secret keys:
+  # "host", "user", "password", "protocol", "port"
+  existingSecret: ""
+
 serviceAccount:
   # -- Specifies whether a service account should be created
   create: true

@@ -54,6 +54,37 @@ spec:
           volumeMounts:
             {{- toYaml . | nindent 12 }}
           {{- end }}
+          env:
+            - name: COUCHDB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ template "couchdb.secret" . }}"
+                  key: host
+            - name: COUCHDB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ template "couchdb.secret" . }}"
+                  key: port
+            - name: COUCHDB_PROTOCOL
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ template "couchdb.secret" . }}"
+                  key: protocol
+            - name: COUCHDB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ template "couchdb.secret" . }}"
+                  key: user
+            - name: COUCHDB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ template "couchdb.secret" . }}"
+                  key: password
+            - name: COZY_ADMIN_PASSPHRASE
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ template "cozy.secret" . }}"
+                  key: passphrase
       {{- with .Values.volumes }}
       volumes:
         {{- toYaml . | nindent 8 }}
