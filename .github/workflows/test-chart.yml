@@ -32,14 +32,11 @@ jobs:
 
       - name: helm lint
         run: |
-          helm lint . \
-              --values dev-values.yaml
+          helm lint .
 
       - name: helm template
         run: |
-          helm template . \
-              --values dev-values.yaml \
-              --output-dir rendered-templates
+          helm template . --output-dir rendered-templates
 
       - name: yamllint (only on templates we manage)
         run: |
