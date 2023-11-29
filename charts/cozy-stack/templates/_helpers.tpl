@@ -60,3 +60,25 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Create the name of cozy secret to use
+*/}}
+{{- define "cozy.secret" -}}
+{{- if .Values.cozy.existingSecret }}
+{{- .Values.cozy.existingSecret }}
+{{- else }}
+{{ "cozy-admin-secret" }}
+{{- end }}
+{{- end }}
+
+{{/*
+Create the name of couchdb secret to use
+*/}}
+{{- define "couchdb.secret" -}}
+{{- if .Values.couchdb.existingSecret }}
+{{- .Values.couchdb.existingSecret }}
+{{- else }}
+{{ "couchdb-secret" }}
+{{- end }}
+{{- end }}
