@@ -43,7 +43,7 @@ jobs:
 
       - name: yamllint (only on templates we manage)
         run: |
-          rm -rf rendered-templates/mastodon/charts
+          rm -rf rendered-templates/cozy-stack/charts
 
           yamllint rendered-templates \
             --config-data "{rules: {indentation: {spaces: 2}, line-length: disable}}"
