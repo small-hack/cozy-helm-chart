@@ -62,13 +62,24 @@ Create the name of the service account to use
 {{- end }}
 
 {{/*
-Create the name of cozy secret to use
+Create the name of cozy admin credentials secret to use
 */}}
-{{- define "cozy.secret" -}}
-{{- if .Values.cozy.existingSecret }}
-{{- .Values.cozy.existingSecret }}
+{{- define "cozy.admin.secret" -}}
+{{- if .Values.cozy.existingAdminSecret }}
+{{- .Values.cozy.existingAdminSecret }}
 {{- else }}
 {{- print "cozy-admin-secret" }}
+{{- end }}
+{{- end }}
+
+{{/*
+Create the name of cozy configuration override secret to use
+*/}}
+{{- define "cozy.config.secret" -}}
+{{- if .Values.cozy.existingConfigSecret }}
+{{- .Values.cozy.existingConfigSecret }}
+{{- else }}
+{{- print "cozy-config-secret" }}
 {{- end }}
 {{- end }}
 
