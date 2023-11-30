@@ -26,9 +26,10 @@ A Helm chart for Cozy Stack on Kubernetes
 | couchdb.protocol | string | `"http"` | connect to couchdb with either http or https |
 | couchdb.user | string | `""` | username to connect to couchdb with |
 | cozy.adminPassphrase | string | `""` | cozy admin user's password. ignored if cozy.existingSecret is set |
+| cozy.configPath | string | `"/etc/cozy"` | file system directory see: https://github.com/cozy/cozy-stack/blob/0fe78134b2d09c73813be48274c66ed8582328e6/cozy.example.yaml#L64 |
+| cozy.domain | string | `""` | sharing domain for connecting iwth other cozy friends |
 | cozy.existingAdminSecret | string | `""` | existing kubernetes secret containing a key called passphrase |
-| cozy.existingConfigSecret | string | `""` | override the default cozy configuration with your own secret that will be mounted at {{ Values.cozy.fs_url }}/.cozy must contain a key called one of: cozy.yaml, cozy.yaml.local, cozy.yml, cozy.yml.local, cozy.json |
-| cozy.fs_url | string | `"/var/lib/cozy"` | file system directory see: https://github.com/cozy/cozy-stack/blob/0fe78134b2d09c73813be48274c66ed8582328e6/cozy.example.yaml#L64 |
+| cozy.existingConfigSecret | string | `""` | override the default cozy configuration with your own secret that will be mounted at {{ Values.cozy.configPath }} must contain a key called cozy.yaml |
 | extraVolumeMounts | list | `[]` |  |
 | extraVolumes | list | `[]` | Additional volumes on the output Deployment definition. |
 | fullnameOverride | string | `""` |  |
@@ -65,6 +66,7 @@ A Helm chart for Cozy Stack on Kubernetes
 | securityContext.runAsGroup | int | `3552` |  |
 | securityContext.runAsUser | int | `3552` |  |
 | service.port | int | `80` |  |
+| service.targetPort | int | `8080` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
 | serviceAccount.automount | bool | `true` | Automatically mount a ServiceAccount's API credentials? |

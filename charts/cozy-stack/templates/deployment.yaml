@@ -102,6 +102,8 @@ spec:
                 secretKeyRef:
                   name: "{{ template "cozy.admin.secret" . }}"
                   key: passphrase
+            - name: COZY_HOST
+              value: {{ .Values.cozy.domain }}
       volumes:
         - name: cozy-config
           secret:
