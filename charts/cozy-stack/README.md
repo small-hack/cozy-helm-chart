@@ -43,11 +43,23 @@ A Helm chart for Cozy Stack on Kubernetes
 | ingress.hosts[0].paths[0].path | string | `"/"` |  |
 | ingress.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
 | ingress.tls | list | `[]` |  |
+| livenessProbe.enabled | bool | `true` | enable liveness probes |
+| livenessProbe.failureThreshold | int | `15` |  |
+| livenessProbe.initialDelaySeconds | int | `10` |  |
+| livenessProbe.periodSeconds | int | `10` |  |
+| livenessProbe.successThreshold | int | `1` |  |
+| livenessProbe.timeoutSeconds | int | `10` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | podLabels | object | `{}` |  |
 | podSecurityContext.fsGroup | int | `3552` |  |
+| readinessProbe.enabled | bool | `true` | enable readiness probes |
+| readinessProbe.failureThreshold | int | `15` |  |
+| readinessProbe.initialDelaySeconds | int | `10` |  |
+| readinessProbe.periodSeconds | int | `10` |  |
+| readinessProbe.successThreshold | int | `1` |  |
+| readinessProbe.timeoutSeconds | int | `10` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | securityContext.runAsGroup | int | `3552` |  |

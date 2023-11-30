@@ -123,3 +123,25 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+
+## Liveness and readiness probe values
+## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+##
+livenessProbe:
+  # -- enable liveness probes
+  enabled: true
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  timeoutSeconds: 10
+  failureThreshold: 15
+  successThreshold: 1
+
+readinessProbe:
+  # -- enable readiness probes
+  enabled: true
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  timeoutSeconds: 10
+  failureThreshold: 15
+  successThreshold: 1
