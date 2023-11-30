@@ -1,6 +1,6 @@
 # cozy-stack
 
-![Version: 0.3.0](https://img.shields.io/badge/Version-0.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.6.14-48-g2c217fe7d](https://img.shields.io/badge/AppVersion-1.6.14--48--g2c217fe7d-informational?style=flat-square)
+![Version: 0.3.1](https://img.shields.io/badge/Version-0.3.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.6.14-48-g2c217fe7d](https://img.shields.io/badge/AppVersion-1.6.14--48--g2c217fe7d-informational?style=flat-square)
 
 A Helm chart for Cozy Stack on Kubernetes
 
@@ -27,7 +27,7 @@ A Helm chart for Cozy Stack on Kubernetes
 | couchdb.user | string | `""` | username to connect to couchdb with |
 | cozy.adminPassphrase | string | `""` | cozy admin user's password. ignored if cozy.existingSecret is set |
 | cozy.existingAdminSecret | string | `""` | existing kubernetes secret containing a key called passphrase |
-| cozy.existingConfigSecret | string | `""` | override the default cozy configuration with your own secret that will be mounted at /etc/cozy/ must contain a key called one of the following: cozy.yaml, cozy.json |
+| cozy.existingConfigSecret | string | `""` | override the default cozy configuration with your own secret that will be mounted at /etc/cozy/ must contain a key called one of: cozy.yaml, cozy.yaml.local, cozy.yml, cozy.yml.local, cozy.json |
 | cozy.fs_url | string | `""` | file store directory |
 | extraVolumeMounts | list | `[]` |  |
 | extraVolumes | list | `[]` | Additional volumes on the output Deployment definition. |
