@@ -27,7 +27,7 @@ A Helm chart for Cozy Stack on Kubernetes
 | couchdb.user | string | `""` | username to connect to couchdb with |
 | cozy.adminPassphrase | string | `""` | cozy admin user's password. ignored if cozy.existingSecret is set |
 | cozy.existingAdminSecret | string | `""` | existing kubernetes secret containing a key called passphrase |
-| cozy.existingConfigSecret | string | `""` | override the default cozy configuration with your own secret that will be mounted at /etc/cozy/ must contain a key called one of the following: cozy.yaml, cozy.json |
+| cozy.existingConfigSecret | string | `""` | override the default cozy configuration with your own secret that will be mounted at /etc/cozy/ must contain a key called one of: cozy.yaml, cozy.yaml.local, cozy.yml, cozy.yml.local, cozy.json |
 | cozy.fs_url | string | `""` | file store directory |
 | extraVolumeMounts | list | `[]` |  |
 | extraVolumes | list | `[]` | Additional volumes on the output Deployment definition. |

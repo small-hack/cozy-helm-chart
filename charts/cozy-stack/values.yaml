@@ -23,7 +23,7 @@ cozy:
   # -- file store directory
   fs_url: ""
   # -- override the default cozy configuration with your own secret that will be mounted at /etc/cozy/
-  # must contain a key called one of the following: cozy.yaml, cozy.json
+  # must contain a key called one of: cozy.yaml, cozy.yaml.local, cozy.yml, cozy.yml.local, cozy.json
   existingConfigSecret: ""
 
 couchdb:
