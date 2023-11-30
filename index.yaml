@@ -3,6 +3,19 @@ entries:
   cozy-stack:
   - apiVersion: v2
     appVersion: 1.6.14-48-g2c217fe7d
+    created: "2023-11-30T08:19:42.902715232Z"
+    description: A Helm chart for Cozy Stack on Kubernetes
+    digest: ba376bbc4fc47fce977e95e4c973b5ace0a25c0f6934b73f233d78b2d94fad28
+    maintainers:
+    - name: jessebot
+      url: https://github.com/jessebot
+    name: cozy-stack
+    type: application
+    urls:
+    - https://github.com/jessebot/cozy-helm-chart/releases/download/cozy-stack-0.2.1/cozy-stack-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: 1.6.14-48-g2c217fe7d
     created: "2023-11-29T22:43:43.172378977Z"
     description: A Helm chart for Cozy Stack on Kubernetes
     digest: 6947d27d2a3fa3c0eaf027f7ae9d64808c5b713e0d489f13e1bea36e1a07d6bf
@@ -27,4 +40,4 @@ entries:
     urls:
     - https://github.com/jessebot/cozy-helm-chart/releases/download/cozy-stack-0.1.0/cozy-stack-0.1.0.tgz
     version: 0.1.0
-generated: "2023-11-29T22:43:43.172393865Z"
+generated: "2023-11-30T08:19:42.902736551Z"
