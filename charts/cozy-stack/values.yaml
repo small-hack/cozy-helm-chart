@@ -22,8 +22,8 @@ cozy:
   existingAdminSecret: ""
   # -- file system directory
   # see: https://github.com/cozy/cozy-stack/blob/0fe78134b2d09c73813be48274c66ed8582328e6/cozy.example.yaml#L64
-  fs_url: "/var/lib/cozy"
-  # -- override the default cozy configuration with your own secret that will be mounted at {{ Values.cozy.fs_url }}/.cozy
+  configPath: "/var/lib/cozy"
+  # -- override the default cozy configuration with your own secret that will be mounted at {{ Values.cozy.configPath }}
   # must contain a key called one of: cozy.yaml, cozy.yaml.local, cozy.yml, cozy.yml.local, cozy.json
   existingConfigSecret: ""
 
