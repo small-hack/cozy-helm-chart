@@ -70,6 +70,7 @@ securityContext:
 
 service:
   type: ClusterIP
+  targetPort: 8080
   port: 80
 
 ingress:
