@@ -52,7 +52,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
             - name: cozy-config
-              mountPath: /etc/cozy
+              mountPath: {{ .Values.cozy.fs_url }}/.cozy
           {{- with .Values.extraVolumeMounts }}
             {{- toYaml . | nindent 12 }}
           {{- end }}

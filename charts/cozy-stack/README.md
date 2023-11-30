@@ -1,6 +1,6 @@
 # cozy-stack
 
-![Version: 0.3.1](https://img.shields.io/badge/Version-0.3.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.6.14-48-g2c217fe7d](https://img.shields.io/badge/AppVersion-1.6.14--48--g2c217fe7d-informational?style=flat-square)
+![Version: 0.3.2](https://img.shields.io/badge/Version-0.3.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.6.14-48-g2c217fe7d](https://img.shields.io/badge/AppVersion-1.6.14--48--g2c217fe7d-informational?style=flat-square)
 
 A Helm chart for Cozy Stack on Kubernetes
 
@@ -27,8 +27,8 @@ A Helm chart for Cozy Stack on Kubernetes
 | couchdb.user | string | `""` | username to connect to couchdb with |
 | cozy.adminPassphrase | string | `""` | cozy admin user's password. ignored if cozy.existingSecret is set |
 | cozy.existingAdminSecret | string | `""` | existing kubernetes secret containing a key called passphrase |
-| cozy.existingConfigSecret | string | `""` | override the default cozy configuration with your own secret that will be mounted at /etc/cozy/ must contain a key called one of: cozy.yaml, cozy.yaml.local, cozy.yml, cozy.yml.local, cozy.json |
-| cozy.fs_url | string | `""` | file store directory |
+| cozy.existingConfigSecret | string | `""` | override the default cozy configuration with your own secret that will be mounted at {{ Values.cozy.fs_url }}/.cozy must contain a key called one of: cozy.yaml, cozy.yaml.local, cozy.yml, cozy.yml.local, cozy.json |
+| cozy.fs_url | string | `"/var/lib/cozy"` | file system directory see: https://github.com/cozy/cozy-stack/blob/0fe78134b2d09c73813be48274c66ed8582328e6/cozy.example.yaml#L64 |
 | extraVolumeMounts | list | `[]` |  |
 | extraVolumes | list | `[]` | Additional volumes on the output Deployment definition. |
 | fullnameOverride | string | `""` |  |
@@ -47,10 +47,11 @@ A Helm chart for Cozy Stack on Kubernetes
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | podLabels | object | `{}` |  |
-| podSecurityContext | object | `{}` |  |
+| podSecurityContext.fsGroup | int | `3552` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
-| securityContext | object | `{}` |  |
+| securityContext.runAsGroup | int | `3552` |  |
+| securityContext.runAsUser | int | `3552` |  |
 | service.port | int | `80` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
