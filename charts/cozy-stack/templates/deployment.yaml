@@ -66,8 +66,8 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
             - name: cozy-config
-              mountPath: {{ .Values.cozy.configPath }}/cozy.yaml.local
-              subPath: cozy.yaml.local
+              mountPath: {{ .Values.cozy.configPath }}/cozy.yaml
+              subPath: cozy.yaml
           {{- with .Values.extraVolumeMounts }}
             {{- toYaml . | nindent 12 }}
           {{- end }}
