@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: cozy:cozy-stack
+  repository: cozy/cozy-stack
   # -- set to Always if you're using the tag: "latest"
   pullPolicy: IfNotPresent
   # -- Overrides the image tag whose default is the chart appVersion.

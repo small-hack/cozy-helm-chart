@@ -1,6 +1,6 @@
 # cozy-stack
 
-![Version: 0.2.1](https://img.shields.io/badge/Version-0.2.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.6.14-48-g2c217fe7d](https://img.shields.io/badge/AppVersion-1.6.14--48--g2c217fe7d-informational?style=flat-square)
+![Version: 0.2.2](https://img.shields.io/badge/Version-0.2.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.6.14-48-g2c217fe7d](https://img.shields.io/badge/AppVersion-1.6.14--48--g2c217fe7d-informational?style=flat-square)
 
 A Helm chart for Cozy Stack on Kubernetes
 
@@ -30,7 +30,7 @@ A Helm chart for Cozy Stack on Kubernetes
 | cozy.fs_url | string | `""` | fs url? |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` | set to Always if you're using the tag: "latest" |
-| image.repository | string | `"cozy:cozy-stack"` |  |
+| image.repository | string | `"cozy/cozy-stack"` |  |
 | image.tag | string | `""` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
