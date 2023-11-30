@@ -50,8 +50,10 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- with .Values.volumeMounts }}
           volumeMounts:
+            - name: cozy-config
+              mountpath: "/etc/cozy"
+          {{- with .Values.extraVolumeMounts }}
             {{- toYaml . | nindent 12 }}
           {{- end }}
           env:
@@ -83,10 +85,13 @@ spec:
             - name: COZY_ADMIN_PASSPHRASE
               valueFrom:
                 secretKeyRef:
-                  name: "{{ template "cozy.secret" . }}"
+                  name: "{{ template "cozy.admin.secret" . }}"
                   key: passphrase
-      {{- with .Values.volumes }}
       volumes:
+        - name: cozy-config
+          secret:
+            secretName: "{{ template "cozy.config.secret" }}"
+      {{- with .Values.extraVolumes }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
       {{- with .Values.nodeSelector }}
