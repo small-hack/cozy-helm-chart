@@ -2,17 +2,26 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+# -- how many pods to deploy of cozy
 replicaCount: 1
 
 image:
-  repository: cozy/cozy-stack
+  # -- Set the registry for your docker image
+  registry: docker.io
+  # -- Set the repository for your cozy docker image.
+  # Official production image is cozy/cozy-stack but it cannot run as non-root yet
+  repository: jessebot/cozy-stack
   # -- set to Always if you're using the tag: "latest"
   pullPolicy: IfNotPresent
   # -- Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
+# -- secrets to pull your docker private docker image
 imagePullSecrets: []
+
+# -- Overrides the name of this chart instead of using the release name everywhere
 nameOverride: ""
+# -- Overrides the full name of this chart instead of using the release name everywhere
 fullnameOverride: ""
 
 cozy:
@@ -59,10 +68,13 @@ podAnnotations: {}
 podLabels: {}
 
 podSecurityContext:
+  # -- group to chown volumes to. If using the production cozy/cozy-stack image, you may need to set this 0 to run as root
   fsGroup: 3552
 
 securityContext:
+  # -- runAsUser for the cozy container. If using the production cozy/cozy-stack image, you may need to set this 0 to run as root
   runAsUser: 3552
+  # -- runAsGroup for the cozy container. If using the production cozy/cozy-stack image, you may need to set this 0 to run as root
   runAsGroup: 3552
   # capabilities:
   #   drop:
@@ -72,22 +84,60 @@ securityContext:
 
 service:
   type: ClusterIP
+  # -- this is the target port on the container
   targetPort: 8080
   port: 80
 
 ingress:
-  enabled: true
+  enabled: false
   className: "nginx"
   annotations: {}
+  # for ingress hosts for cozy, you'll need an ingress per app, e.g.
+  #   home.cozy.example.com, settings.cozy.example.com etc
+  # learn more here: https://docs.cozy.io/en/tutorials/selfhosting/finalize/nginx/
+  # if this is exposed to the internet/intranet make sure to also setup your DNS records like:
+  #   cozy     1h     IN         A     <your_server_IP>
+  #   *.cozy   1h     IN       CNAME     cozy
+  #
+  # example using example.com as the core domain:
+  #   cozy.example.com     1h     IN         A       42.42.20.24
+  #   *.cozy.example.com   1h     IN       CNAME     cozy
   hosts:
     - host: chart-example.local
       paths:
         - path: /
           pathType: ImplementationSpecific
+    #
+    # - host: settings.chart-example.local
+    #   paths:
+    #     - path: /
+    #       pathType: ImplementationSpecific
+    #
+    # - host: home.chart-example.local
+    #   paths:
+    #     - path: /
+    #       pathType: ImplementationSpecific
+    #
+    # - host: drive.chart-example.local
+    #   paths:
+    #     - path: /
+    #       pathType: ImplementationSpecific
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+  #
+  #  - secretName: settings-chart-example-tls
+  #    hosts:
+  #      - settings.chart-example.local
+  #
+  #  - secretName: home-chart-example-tls
+  #    hosts:
+  #      - home.chart-example.local
+  #
+  #  - secretName: drive-chart-example-tls
+  #    hosts:
+  #      - drive.chart-example.local
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -115,7 +165,7 @@ extraVolumes: []
 #     secretName: mysecret
 #     optional: false
 
-# Additional volumeMounts on the output Deployment definition.
+# -- Additional volumeMounts on the output Deployment definition.
 extraVolumeMounts: []
 # - name: foo
 #   mountPath: "/etc/foo"
@@ -129,10 +179,10 @@ affinity: {}
 
 
 ## Liveness and readiness probe values
-## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
 ##
 livenessProbe:
   # -- enable liveness probes
+  # Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
   enabled: true
   initialDelaySeconds: 10
   periodSeconds: 10
@@ -142,6 +192,7 @@ livenessProbe:
 
 readinessProbe:
   # -- enable readiness probes
+  # Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
   enabled: true
   initialDelaySeconds: 10
   periodSeconds: 10
