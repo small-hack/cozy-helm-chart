@@ -20,4 +20,4 @@ The official production docker image is sourced from [cozy/cozy-stack](https://g
 
 ## Status
 
-Still maintained and loved. We'd love community PRs for improvements and Issues to identify problems <3
+Archived due to lack of security features upstream. Please checkout [nextcloud/helm](https://github.com/nextcloud/helm) instead.
